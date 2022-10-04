@@ -6,7 +6,7 @@
 
 body{
     margin: 0;
-    background-color: beige;
+    background-color: white;
 }
 
 a{
@@ -36,4 +36,10 @@ input{
 
 input:focus{
     border: 1px solid black;
+}
+
+ul{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
 }
