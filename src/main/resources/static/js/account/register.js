@@ -1,7 +1,7 @@
 const registerButton = document.querySelector(".account-button");
 
 registerButton.onclick = () => {
-    const accountInput = document.querySelectorAll(".account-input");
+    const accountInput = document.querySelectorAll("account-input");
 
     let user = {
         lastName: accountInput[0].value,
@@ -15,7 +15,7 @@ registerButton.onclick = () => {
         type: "post",                   //필수
         url: "/api/account/register",   //필수
         data: user,                     //전송할 데이터가 있으면
-        datatype: "json",               //json 외 text 등을 사용할 수 있지만 js
+        dataType: "json",               //json 외 text 등을 사용할 수 있지만 js
         success: (response) => {         //성공시에 실행될 메소드
             alert("회원가입 요청 성공");
         },
