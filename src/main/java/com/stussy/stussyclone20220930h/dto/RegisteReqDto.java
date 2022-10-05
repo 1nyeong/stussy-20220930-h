@@ -27,6 +27,6 @@ public class RegisteReqDto {
 
     @NotBlank(message = "비밀번호는 비워 둘 수 없습니다", groups = ValidationGroups.NotBlankGroups.class)
     @Size(min = 8, max = 16, message = "비밀번호는 8자 부터 16자까지 입력가능합니다", groups = ValidationGroups.SizeGroups.class)
-    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*_])[a-zA-Z\\d~~!@#$%^&*_](8,16)&", message = "비밀번호는 특수기호, 영문, 숫자를 모두 포함해야합니다", groups = ValidationGroups.PatternCheckGroups.class)
+    @Pattern(regexp = "^(?=.*[a-zA-Z])(?=.*\\d)(?=.*[~!@#$%^&*_])[a-zA-Z\\d-~!@#$%^&*_](8,16)&", message = "비밀번호는 특수기호, 영문, 숫자를 모두 포함해야합니다", groups = ValidationGroups.PatternCheckGroups.class)
     private String password;
 }
