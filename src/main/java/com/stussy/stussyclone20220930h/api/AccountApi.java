@@ -2,6 +2,7 @@ package com.stussy.stussyclone20220930h.api;
 
 import com.stussy.stussyclone20220930h.dto.RegisterReqDto;
 import com.stussy.stussyclone20220930h.dto.validation.ValidationSequence;
+import com.stussy.stussyclone20220930h.exception.CustomValidationException;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -35,7 +36,7 @@ public class AccountApi {
                 errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
             }
 
-            return ResponseEntity.badRequest().body(errorMap);
+            throw new CustomValidationException("Validation Error", errorMap);
         }
 
         return ResponseEntity.created(null).body(null);
