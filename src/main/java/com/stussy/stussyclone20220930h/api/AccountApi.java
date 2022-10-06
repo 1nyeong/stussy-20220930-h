@@ -1,6 +1,6 @@
 package com.stussy.stussyclone20220930h.api;
 
-import com.stussy.stussyclone20220930h.dto.RegisteReqDto;
+import com.stussy.stussyclone20220930h.dto.RegisterReqDto;
 import com.stussy.stussyclone20220930h.dto.validation.ValidationSequence;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
@@ -16,28 +16,30 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@RequestMapping("api/account")
+@RequestMapping("/api/account")
 @RestController
 public class AccountApi {
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisteReqDto registeReqDto, BindingResult bindingResult){
+    public ResponseEntity<?> register(@Validated(ValidationSequence.class) @RequestBody RegisterReqDto registerReqDto, BindingResult bindingResult) {
 
-        if(bindingResult.hasErrors()){
+        System.out.println(registerReqDto);
 
+        if(bindingResult.hasErrors()) {
             Map<String, String> errorMap = new HashMap<String, String>();
 
             List<FieldError> fieldErrors = bindingResult.getFieldErrors();
-            for(FieldError fieldError : fieldErrors){
-                System.out.println("필드명 : " + fieldError.getField());
-                System.out.println("에러 메세지 : " + fieldError.getDefaultMessage());
-
+            for(FieldError fieldError : fieldErrors) {
+                System.out.println("필드명: " + fieldError.getField());
+                System.out.println("에러 메세지: " + fieldError.getDefaultMessage());
                 errorMap.put(fieldError.getField(), fieldError.getDefaultMessage());
-
             }
+
             return ResponseEntity.badRequest().body(errorMap);
         }
+
         return ResponseEntity.created(null).body(null);
     }
 
 }
+
