@@ -29,7 +29,7 @@ public class AccountApi {
         accountService.duplicateEmail(registerReqDto);
         accountService.register(registerReqDto);
 
-        return ResponseEntity.created(null).body(new CMRespDto<>("회원가입 성공", registerReqDto));
+        return ResponseEntity.created(null).body(new CMRespDto<>("회원가입 성공", registerReqDto.getEmail()));
     }
 
 }
