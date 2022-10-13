@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+
 @RequestMapping("/api/account")
 @RestController
 @RequiredArgsConstructor
@@ -29,7 +31,7 @@ public class AccountApi {
         accountService.duplicateEmail(registerReqDto);
         accountService.register(registerReqDto);
 
-        return ResponseEntity.created(null).body(new CMRespDto<>("회원가입 성공", registerReqDto.getEmail()));
+        return ResponseEntity.created(URI.create("/account/login")).body(new CMRespDto<>("회원가입 성공", registerReqDto.getEmail()));
     }
 
 }
