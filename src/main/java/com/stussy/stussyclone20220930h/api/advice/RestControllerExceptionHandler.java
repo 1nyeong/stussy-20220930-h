@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 public class RestControllerExceptionHandler {
 
     @ExceptionHandler(CustomValidationException.class)
-    public ResponseEntity<?> validationErrorException(CustomValidationException e){
+    public ResponseEntity<?> validationErrorException(CustomValidationException e) {
 
-        return ResponseEntity.badRequest().body(new CMRespDto<>(e.getMessage(),e.getErrorMap()));
+        return ResponseEntity.badRequest().body(new CMRespDto<>(e.getMessage(), e.getErrorMap()));
     }
 
 }
