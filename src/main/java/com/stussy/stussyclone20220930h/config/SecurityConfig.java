@@ -24,13 +24,15 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.authorizeHttpRequests()
                 .antMatchers("/account/mypage","/index")
                 .authenticated()
+                .antMatchers("/admin/**")
+                .hasRole("ADMIN")
                 .anyRequest()
                 .permitAll()
                 .and()
                 .formLogin()
                 .usernameParameter("email")
-                .loginPage("/account/login")            //login page 요청
-                .loginProcessingUrl("/account/login")   //login service post 요청
+                .loginPage("/account/login")                 //login page 요청
+                .loginProcessingUrl("/account/login")        //login service post 요청
                 .failureHandler(new AuthFailureHandler())
                 .defaultSuccessUrl("/index");
     }

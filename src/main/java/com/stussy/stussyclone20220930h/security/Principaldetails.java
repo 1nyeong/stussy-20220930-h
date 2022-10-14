@@ -4,6 +4,7 @@ import com.stussy.stussyclone20220930h.domain.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Principaldetails implements UserDetails {
@@ -16,7 +17,9 @@ public class Principaldetails implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        Collection<GrantedAuthority> authorities = new ArrayList<GrantedAuthority>();
+        authorities.add(() -> user.getName());
+        return authorities;
     }
 
     @Override
@@ -41,7 +44,7 @@ public class Principaldetails implements UserDetails {
 
     @Override
     public boolean isCredentialsNonExpired() {
-        return false    ;
+        return true;
     }
 
     @Override
