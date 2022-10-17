@@ -1,4 +1,4 @@
-package com.stussy.stussyclone20220930h.api.advice;
+package com.stussy.stussyclone20220930h.dto.validation.advice;
 
 import com.stussy.stussyclone20220930h.dto.CMRespDto;
 import com.stussy.stussyclone20220930h.exception.CustomInternalServerErrorException;
