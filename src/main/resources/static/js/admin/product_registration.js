@@ -4,6 +4,7 @@ const RegisterEventService = {
     getPriceInputObj: () => document.querySelectorAll(".product-inputs")[2],
     getRegistInfo: () => document.querySelector(".regist-info"),
     getRegistButtonObj: () => document.querySelector(".regist-button"),
+    getInfoTextareaObjs: () => document.querySelectorAll(".product-inputs"),
 
     init: function() {
         this.getNameInputObj().disabled = true;
@@ -48,15 +49,51 @@ const RegisterEventService = {
 
     addRegistButtonEvent: function() {
         this.getRegistButtonObj().onclick = () => {
+            RegisterObj.simpleInfo = this.getInfoTextareaObjs()[3].value;
+            RegisterObj.detailInfo = this.getInfoTextareaObjs()[4].value;
+            RegisterObj.optionInfo = this.getInfoTextareaObjs()[5].value;
+            RegisterObj.managementInfo = this.getInfoTextareaObjs()[6].value;
+            RegisterObj.shippingInfo = this.getInfoTextareaObjs()[7].value;
+            
             console.log(RegisterObj);
+            
+            RegisterEventService.createProductRequest();
         }
+    }
+}
+
+const RegisterRequestService = {
+    createProductRequest: () => {
+        let responseResult = null;
+
+        $.ajax({
+            async: false,
+            type: "post",
+            url: "api/admin/product",
+            contentType: "application/json",
+            data: JSON.stringify(RegisterObj),
+            dataType: "json",
+            success: (response) => {
+                responseResult = response.data;
+            },
+            error: (error) => {
+                console.log(error);
+            }
+        })
+
+        return responseResult;
     }
 }
 
 const RegisterObj = {
     category: null,
     name: null,
-    price: null
+    price: null,
+    simpleInfo: null,
+    detailInfo: null,
+    optionInfo: null,
+    managementInfo: null,
+    shippingInfo: null
 }
 
 const ProductRegistration = {
