@@ -57,7 +57,7 @@
         </header>
         <main>
             <div class="admin">
-                <h1 class="admin-title">ADMIN PRODUCT ADD</h1>
+                <h1 class="admin-title">ADMIN PRODUCT REGISTRATION</h1>
                 <div class="admin-container">
                     <aside class="admin-menus">
                         <ul>
@@ -68,22 +68,23 @@
                         </ul>
                     </aside>
                     <section class="admin-main">
-                        <select class="product-inputs">
-                            <option value="none">상품 종류</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
+                        <div class="regist-header">
+                            <select class="product-inputs">
+                                <option value="none">상품 종류</option>
+                                <option value="TEES">TEES</option>
+                                <option value="DENIM">DENIM</option>
+                            </select>
+                            <input type="text" class="product-inputs" placeholder="상품명">
+                            <input type="text" class="product-inputs" placeholder="가격">
+                        </div>
+                        <div class="regist-info regist-info-invisible">
+                            <textarea class="product-inputs" placeholder="간단 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="상세 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="추가 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="관리 설명"></textarea>
+                            <textarea class="product-inputs" placeholder="배송 정보"></textarea>
+                        </div>
+                        <button type="button" class="btn regist-button">등록하기</button>
                     </section>
                 </div>
             </div>
@@ -92,6 +93,6 @@
 
         </footer>
     </div>
-    <script src="/static/js/account/register.js"></script>
+    <script src="/static/js/admin/product_registration.js"></script>
 </body>
 </html>
