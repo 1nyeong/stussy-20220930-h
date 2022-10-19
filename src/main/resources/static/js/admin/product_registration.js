@@ -58,15 +58,7 @@ class ProductMst {
     }
 }
 
-class RegisterService { 
-    constructor() {
-        this.loadRegister();
-    }
 
-    loadRegister() {
-        new RegisterEventService();
-    }
-}
 
 class RegisterApi {
     createProductRequest(productMst) {
@@ -92,7 +84,6 @@ class RegisterApi {
 }
 
 class RegisterEventService {
-    
     #categorySelectObj;
     #nameInputObj;
     #priceInputObj;
@@ -171,8 +162,6 @@ class RegisterEventService {
                 category, name, price, simpleInfo, detailInfo, 
                 optionInfo, managementInfo, shippingInfo);
 
-            console.log(productMst.getObject());
-
             const registerApi = new RegisterApi();
             registerApi.createProductRequest(productMst.getObject());
 
@@ -180,27 +169,28 @@ class RegisterEventService {
     }
 }
 
-class RegisterService{
+class RegisterService { 
     static #instance = null;
 
-    constructor(){
+    constructor() {
     }
 
-    static getInstance(){
-        if(this.#instance == null){
+    static getInstance() {
+        if(this.#instance == null) {
             this.#instance = new RegisterService();
         }
         return this.#instance;
     }
 
-    loadRegister(){
+    loadRegister() {
+        
     }
 
-    setRegisterHeaderEvent(){
+    setRegisterHeaderEvent() {
         new RegisterEventService();
     }
 }
 
 window.onload = () => {
     RegisterService.getInstance().setRegisterHeaderEvent();
-} 
+}

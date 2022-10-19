@@ -17,7 +17,7 @@ public class ProductManagementServiceImpl implements ProductManagementService{
 
     @Override
     public List<CategoryResponseDto> getCategoryList() throws Exception {
-        
+
         return null;
     }
 
