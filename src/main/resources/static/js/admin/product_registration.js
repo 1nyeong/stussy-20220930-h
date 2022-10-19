@@ -1,4 +1,4 @@
-class ProductMst{
+class ProductMst {
     #category;
     #name;
     #price;
@@ -8,7 +8,7 @@ class ProductMst{
     #managementInfo;
     #shippingInfo;
 
-    constructor(category, name, price, simpleInfo, detailInfo, optionInfo, managementInfo, shippingInfo){
+    constructor(category, name, price, simpleInfo, detailInfo, optionInfo, managementInfo, shippingInfo) {
         this.#category = category;
         this.#name = name;
         this.#price = price;
@@ -19,31 +19,31 @@ class ProductMst{
         this.#shippingInfo = shippingInfo;
     }
 
-    getCategory(){return this.#category;}
-    setCategory(){this.#category = category;}
+    getCategory() {return this.#category;}
+    setCategory(category) {this.#category = category;}
 
-    getName(){return this.#name;}
-    setName(){this.#name = name;}
-    
-    getPrice(){return this.#price;}
-    setPrice(){this.#price = price;}
-    
-    getSimpleInfo(){return this.#simpleInfo;}
-    setSimpleInfo(){this.#simpleInfo = simpleInfo;}
-    
-    getDetailInfo(){return this.#detailInfo;}
-    setDetailInfo(){this.#detailInfo = detailInfo;}
-    
-    getOptionInfo(){return this.#optionInfo;}
-    setOptionInfo(){this.#optionInfo = optionInfo;}
-    
-    getManagementInfo(){return this.#managementInfo;}
-    setManagementInfo(){this.#managementInfo = managementInfo;}
-    
-    getShippingInfo(){return this.#shippingInfo;}
-    setShippingInfo(){this.#shippingInfo = shippingInfo;}
+    getName() {return this.#name;}
+    setName(name) {this.#name = name;}
 
-    getObject(){
+    getPrice() {return this.#price;}
+    setPrice(price) {this.#price = price;}
+
+    getSimpleInfo() {return this.#simpleInfo;}
+    setSimpleInfo(simpleInfo) {this.#simpleInfo = simpleInfo;}
+
+    getDetailInfo() {return this.#detailInfo;}
+    setDetailInfo(detailInfo) {this.#detailInfo = detailInfo;}
+
+    getOptionInfo() {return this.#optionInfo;}
+    setOptionInfo(optionInfo) {this.#optionInfo = optionInfo;}
+
+    getManagementInfo() {return this.#managementInfo;}
+    setManagementInfo(managementInfo) {this.#managementInfo = managementInfo;}
+
+    getShippingInfo() {return this.#shippingInfo;}
+    setShippingInfo(shippingInfo) {this.#shippingInfo = shippingInfo;}
+
+    getObject() {
         const obj = {
             category: this.#category,
             name: this.#name,
@@ -58,29 +58,27 @@ class ProductMst{
     }
 }
 
-
-//메인 로직
-class RegisterService{
-    constructor(){
+class RegisterService { 
+    constructor() {
         new RegisterEventService();
         this.loadRegister();
     }
 
-    loadRegister(){
+    loadRegister() {
 
     }
 }
 
-class RegisterApi{
-    createProductRequest(productMst){
+class RegisterApi {
+    createProductRequest(productMst) {
         let responseResult = null;
 
         $.ajax({
             async: false,
             type: "post",
-            url: "api/admin/product",
+            url: "/api/admin/product",
             contentType: "application/json",
-            data: JSON.stringify(RegisterObj),
+            data: JSON.stringify(productMst),
             dataType: "json",
             success: (response) => {
                 responseResult = response.data;
@@ -88,8 +86,8 @@ class RegisterApi{
             error: (error) => {
                 console.log(error);
             }
-        })
-
+        });
+        
         return responseResult;
     }
 }
@@ -101,7 +99,7 @@ class RegisterEventService {
     #registButtonObj;
     #infoTextareaObjs;
 
-    constructor(){
+    constructor() {
         this.#categorySelectObj = document.querySelectorAll(".product-inputs")[0];
         this.#nameInputObj = document.querySelectorAll(".product-inputs")[1];
         this.#priceInputObj = document.querySelectorAll(".product-inputs")[2];
@@ -116,17 +114,17 @@ class RegisterEventService {
         this.addRegistButtonEvent();
     }
 
-    init(){
-        this.#nameInputObj().disabled = true;
-        this.#priceInputObj().disabled = true;
-        this.#registButtonObj().disabled = true;
+    init() {
+        this.#nameInputObj.disabled = true;
+        this.#priceInputObj.disabled = true;
+        this.#registButtonObj.disabled = true;
     }
 
     addCategorySelectEvent() {
         this.#categorySelectObj.onchange = () => {
-            if(this.#categorySelectObj.value != "none"){
+            if(this.#categorySelectObj.value != "none") {
                 this.#nameInputObj.disabled = false;
-            }else{
+            }else {
                 this.#nameInputObj.disabled = true;
             }
         }
@@ -134,9 +132,9 @@ class RegisterEventService {
 
     addNameInputEvent() {
         this.#nameInputObj.onkeyup = () => {
-            if(this.#nameInputObj.value.length != 0){
+            if(this.#nameInputObj.value.length != 0) {
                 this.#priceInputObj.disabled = false;
-            }else{
+            }else {
                 this.#priceInputObj.disabled = true;
             }
         }
@@ -146,13 +144,14 @@ class RegisterEventService {
         this.#priceInputObj.onkeyup = () => {
             const registInfo = document.querySelector(".regist-info");
 
-            if(this.#priceInputObj.value.length != 0){
+            if(this.#priceInputObj.value.length != 0) {
                 this.#registButtonObj.disabled = false;
                 registInfo.classList.remove("regist-info-invisible");
 
-            }else{
+            }else {
                 this.#registButtonObj.disabled = true;
                 registInfo.classList.add("regist-info-invisible");
+
             }
         }
     }
@@ -162,20 +161,23 @@ class RegisterEventService {
             const category = this.#categorySelectObj.value;
             const name = this.#nameInputObj.value;
             const price = this.#priceInputObj.value;
-            const simpleInfo = this.#infoTextareaObjs()[3].value;
-            const detailInfo = this.#infoTextareaObjs()[4].value;
-            const optionInfo = this.#infoTextareaObjs()[5].value;
-            const managementInfo = this.#infoTextareaObjs()[6].value;
-            const shippingInfo = this.#infoTextareaObjs()[7].value;
+            const simpleInfo = this.#infoTextareaObjs[3].value;
+            const detailInfo = this.#infoTextareaObjs[4].value;
+            const optionInfo = this.#infoTextareaObjs[5].value;
+            const managementInfo = this.#infoTextareaObjs[6].value;
+            const shippingInfo = this.#infoTextareaObjs[7].value;
 
-            const productMst = new  ProductMst(category, name, price, simpleInfo, detailInfo, optionInfo, managementInfo, shippingInfo);
-            
-            console.log(productMst.getObject);
-            
+            const productMst = new ProductMst(
+                category, name, price, simpleInfo, detailInfo, 
+                optionInfo, managementInfo, shippingInfo);
+
+            console.log(productMst.getObject());
+
         }
     }
 }
 
+
 window.onload = () => {
     new RegisterService();
-}
+} 
