@@ -60,12 +60,11 @@ class ProductMst {
 
 class RegisterService { 
     constructor() {
-        new RegisterEventService();
         this.loadRegister();
     }
 
     loadRegister() {
-
+        new RegisterEventService();
     }
 }
 
@@ -93,6 +92,7 @@ class RegisterApi {
 }
 
 class RegisterEventService {
+    
     #categorySelectObj;
     #nameInputObj;
     #priceInputObj;
@@ -173,11 +173,34 @@ class RegisterEventService {
 
             console.log(productMst.getObject());
 
+            const registerApi = new RegisterApi();
+            registerApi.createProductRequest(productMst.getObject());
+
         }
     }
 }
 
+class RegisterService{
+    static #instance = null;
+
+    constructor(){
+    }
+
+    static getInstance(){
+        if(this.#instance == null){
+            this.#instance = new RegisterService();
+        }
+        return this.#instance;
+    }
+
+    loadRegister(){
+    }
+
+    setRegisterHeaderEvent(){
+        new RegisterEventService();
+    }
+}
 
 window.onload = () => {
-    new RegisterService();
+    RegisterService.getInstance().setRegisterHeaderEvent();
 } 
