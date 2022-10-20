@@ -3,6 +3,7 @@ package com.stussy.stussyclone20220930h.service.admin;
 import com.stussy.stussyclone20220930h.domain.Product;
 import com.stussy.stussyclone20220930h.dto.admin.CategoryResponseDto;
 import com.stussy.stussyclone20220930h.dto.admin.ProductRegisterReqDto;
+import com.stussy.stussyclone20220930h.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclone20220930h.repository.admin.ProductManagementRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,6 +28,9 @@ public class ProductManagementServiceImpl implements ProductManagementService {
 
     @Override
     public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception{
+        if(productManagementRepository.saveProductMst(productRegisterReqDto.toEntity()) == 0){
+            throw new CustomInternalServerErrorException("상품 등록 실패");
+        }
 
     }
 

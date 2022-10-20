@@ -13,12 +13,12 @@ public class Product {
     private int id;
     private String pdt_name;
     private int category_id;
-    private int price;
+    private int pdt_price;
     private String pdt_simple_info;
     private String pdt_detail_info;
     private String pdt_option_info;
     private String pdt_management_info;
-    private String pdt_shipment_info;
+    private String pdt_shipping_info;
 
     public Product toEntity() {
         return Product.builder()
