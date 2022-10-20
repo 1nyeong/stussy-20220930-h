@@ -58,7 +58,7 @@ class ProductMst {
     }
 }
 
-
+class 
 
 class RegisterApi {
     createProductRequest(productMst) {

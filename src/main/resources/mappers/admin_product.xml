@@ -11,13 +11,13 @@
         <result property="category_name" column="category_name"/>
     </resultMap>
 
-    <select id="getCategoryList" parameterType="String" resultMap="product_category">
+    <select id="getCategoryList" resultMap="product_category">
         select
-            id,
-            group_id,
-            category_name
+        id,
+        group_id,
+        category_name
         from
-            pdt_category_mst
+        pdt_category_mst
     </select>
 
 

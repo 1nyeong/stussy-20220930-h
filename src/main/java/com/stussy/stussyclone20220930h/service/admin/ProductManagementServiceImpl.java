@@ -7,22 +7,27 @@ import com.stussy.stussyclone20220930h.repository.admin.ProductManagementReposit
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 @RequiredArgsConstructor
-public class ProductManagementServiceImpl implements ProductManagementService{
+public class ProductManagementServiceImpl implements ProductManagementService {
 
     private final ProductManagementRepository productManagementRepository;
 
     @Override
     public List<CategoryResponseDto> getCategoryList() throws Exception {
-
-        return null;
+        List<CategoryResponseDto> categoryResponseDtos = new ArrayList<CategoryResponseDto>();
+        productManagementRepository.getCategoryList().forEach(category -> {
+            categoryResponseDtos.add(category.toDto());
+        });
+        return categoryResponseDtos;
     }
 
     @Override
     public void registerMst(ProductRegisterReqDto productRegisterReqDto) throws Exception{
 
     }
+
 }
