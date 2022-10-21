@@ -81,9 +81,16 @@
                             </th:block>
                             <input type="email" class="account-input" name="email" th:value="${email}" placeholder="이메일" required>
                             <input type="password" class="account-input" name="password" placeholder="비밀번호" required>
-                            <a class="find-password-link" href="">비밀번호를 잊으셨나요?</a>
+                            <a class="find-password-link" href="#forgot">비밀번호를 잊으셨나요?</a>
                             <button class="btn account-button">로그인</button>
                         </form>
+                    </section>
+                    <section class="account-password-forgot account-invisible">
+                        <h2 class="account-subtitle">비밀번호 찾기</h2>
+                        <p class="account-content">계정에 연결된 이메일을 입력하시면 비밀번호를 재설정하실 수 있습니다.</p>
+                        <input type="email" class="account-input" placeholder="이메일">
+                        <button class="btn account-button">확인</button>
+                        <a class="login-return-link" href="/account/login">취소</a>
                     </section>
                 </div>
             </div>

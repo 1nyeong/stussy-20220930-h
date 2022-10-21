@@ -88,3 +88,7 @@ section{
     justify-content: center;
     color: rgb(127, 127, 127);
 }
+
+.account-invisible{
+    display: none;
+}
