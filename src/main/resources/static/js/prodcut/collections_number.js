@@ -1,92 +1,93 @@
-class CollectionsApi{
+class CollectionsApi {
     static #instance = null;
 
-    static getInstance(){
-        if(this.#instance == null){
+    static getInstance() {
+        if(this.#instance == null) {
             this.#instance = new CollectionsApi();
         }
         return this.#instance;
     }
 
-    getCollections(page){
+    getCollections(page) {
         let responseData = null;
 
         const url = location.href;
-        const category = url.substring(Number(url.lastIndexOf("/")) + 1);
+        const category = url.substring(url.lastIndexOf("/") + 1);
 
         $.ajax({
             async: false,
             type: "get",
             url: "/api/collections/" + category,
             data: {
-                "page": page 
+                "page": page
             },
             dataType: "json",
             success: (response) => {
                 responseData = response.data;
             },
-            error: (error) =>{
+            error: (error) => {
                 console.log(error);
             }
         });
+
+        return responseData;
+
     }
 }
 
-class PageNumber{
+class PageNumber {
     #page = 0;
     #totalCount = 0;
-     
-    constructor(page, totalCount){
+
+    constructor(page, totalCount) {
         this.#page = page;
         this.#totalCount = totalCount;
+        loadPageNumbers();
     }
 
-    loadPageNumber(){
+    loadPageNumbers() {
         this.createPreButton();
         this.createNumberButtons();
-        this.createNextButton() ;
+        this.createNextButton();
     }
 
-    createPreButton(){
-
-    }
-
-    createNumberButtons(){
+    createPreButton() {
 
     }
 
-    createNextButton(){
+    createNumberButtons() {
+
+    }
+
+    createNextButton() {
 
     }
 
 }
 
-class CollectionsService{
+class CollectionsService {
     static #instance = null;
 
-    static getInstance(){
-        if(this.#instance == null){
-            this.#instance = new CollectionsService ();
+    static getInstance() {
+        if(this.#instance == null) {
+            this.#instance = new CollectionsService();
         }
         return this.#instance;
-    }       
+    }
 
     collectionsEntity = {
-        
         page: 1,
         totalCount: 0
-        
     }
-    
-    loadCollections(page){
+
+    loadCollections() {
         const responseData = CollectionsApi.getInstance().getCollections(this.collectionsEntity.page);
         this.collectionsEntity.totalCount = responseData[0].productTotalCount;
-
-
+        
     }
 
 }
 
 window.onload = () => {
-    console.log(CollectionsApi.getInstance.getCollections(1));
+    console.log();
 }
