@@ -48,4 +48,10 @@ public class ProductAdminApi {
         return ResponseEntity.ok().body(new CMRespDto<>("Get Successfully", productManagementService.getCategoryList()));
     }
 
+    @GetMapping("/option/product/mst")
+    public ResponseEntity<?> getProductMstList() throws Exception{
+        return ResponseEntity.ok()
+                .body(new CMRespDto<>("Get Successfully", productManagementService.getProductMstList()));
+    }
+
 }
