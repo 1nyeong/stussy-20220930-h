@@ -2,14 +2,13 @@
 <html lang="ko" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Com2patible" content="IE=edge">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Account</title>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
+    <Script src="http://code.jquery.com/jquery-latest.min.js"></Script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/header.css">
-    <link rel="stylesheet" href="/static/css/admin.css">
-    <link rel="stylesheet" href="/static/css/aside.css">
+    <link rel="stylesheet" href="/static/css/collections_number.css">
 </head>
 <body>
     <div id="container">
@@ -17,7 +16,7 @@
             <div class="header-container">
                 <div class="header-left-container">
                     <div class="site-logo">
-                        <img class="site-logo-img" src="/static/images/header/site_logo.PNG" alt="sttusy">
+                        <img class="site-logo-img" src="/static/images/header/sitelogo.png" alt="stussy">
                     </div>
                     <div class="nav-menu-button">
                         <a class="nav-menu-button-link" href="">SHOP</a>
@@ -27,7 +26,7 @@
                     <button class="header-search-button" type="button">SEARCH</button>
                     <button class="header-bag-button" type="button">BAG(<span class="bag-count-number">1</span>)</button>
                     <button class="header-country-button" type="button">
-                        <img class="country-button-img" src="/static/images/header/teageukgi.PNG" alt="태극기">
+                        <img class="country-button-img"src="/static/images/header/teageukgi.png" alt="태극기">
                     </button>
                 </div>
             </div>
@@ -56,42 +55,14 @@
             <script src="/static/js/header/header.js"></script>
         </header>
         <main>
-            <div class="admin">
-                <h1 class="admin-title">ADMIN PRODUCT ADD</h1>
-                <div class="admin-container">
-                    <aside class="admin-menus">
-                        <ul>
-                            <li><a href="/admin/products">상품 조회</a></li>
-                            <li><a href="/admin/product/addition">상품 등록</a></li>
-                            <li><a href="/admin/systems">시스템 정보</a></li>
-                            <li><a href="/logout">로그아웃</a></li>
-                        </ul>
-                    </aside>
-                    <section class="admin-main">
-                        <select class="product-inputs">
-                            <option value="none">상품 종류</option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                            <option value=""></option>
-                        </select>
-                    </section>
-                </div>
-            </div>
+            <ul class="collection-products">
+                
+            </ul>
         </main>
-        <footer>
+            <footer>
 
-        </footer>
+            </footer>
     </div>
-    <script src="/static/js/account/register.js"></script>
+    <script src="/static/js/prodcut/collections_scroll.js"></script>
 </body>
 </html>
