@@ -19,3 +19,6 @@ spring:
 mybatis:
   mapper-locations:
     - /mappers/*.xml
+
+file:
+    path: C:/Program Files (x86)/inyeong/hgit/stussy-20220930-inyeong/src/main/resources/static/upload/

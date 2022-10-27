@@ -63,8 +63,8 @@
                     <aside class="admin-menus">
                         <ul>
                             <li><a href="/admin/products">상품 조회</a></li>
-                            <li><a href="/admin/products/addition">상품 등록</a></li>
-                            <li><a href="/admin/systems">카테고리 정보</a></li>
+                            <li><a href="/admin/product/addition">상품 등록</a></li>
+                            <li><a href="/admin/systems">시스템 정보</a></li>
                             <li><a href="/logout">로그아웃</a></li>
                         </ul>
                     </aside>
@@ -76,7 +76,7 @@
                         <br>
                         <label for="product-size">사이즈</label>
                         <select id="product-size" class="product-size">
-                        </select>       
+                        </select>
                         <br>
                         <br>
                         <label for="product-color">색상</label>
@@ -90,20 +90,24 @@
                         <button class="btn regist-button">추가</button>
                         <br>
                         <br>
+                        <br>
                             <hr>
                         <br>
                         <br>
-                        <input type="file" class="product-img" name="files" multiple>
+                        <br>
+                        <form enctype="multipart/form-data">
+                            <input type="file" class="files-input" name="files" multiple>
+                        </form>
+                        <button class="btn regist-button img-add-button">사진등록</button>
                         <ul class="file-list">
-                            <li class="file-info">
-                                <div class="file-img">
-                                    <img src="/static/images/product/product1.png" alt="">
-                                </div>
-                                <div class="file-name">파일명.png</div>
-                                <button type="button" class="btn delete-button">삭제</button>
-                            </li>
                         </ul>
-                        <button class="btn file-add-button">사진등록</button>
+                        <button class="btn regist-button upload-button">사진저장</button>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <br>
+                        <div></div>
                     </section>
                 </div>
             </div>
