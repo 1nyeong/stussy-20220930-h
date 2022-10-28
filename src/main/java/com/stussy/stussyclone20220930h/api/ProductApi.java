@@ -22,10 +22,12 @@ public class ProductApi {
         return ResponseEntity.ok(new CMRespDto<>("Successfully", productService.getProductList(category, page)));
     }
 
-    @GetMapping("/product/{ptdId}")
+    @GetMapping("/product/{pdtId}")
     public ResponseEntity<?> getProduct(@PathVariable int pdtId) throws Exception {
 
-        return ResponseEntity.ok(new CMRespDto<>("Successfully", productService.getProduct(ptdId)));
+
+
+        return ResponseEntity.ok(new CMRespDto<>("Successfully", productService.getProduct(pdtId)));
     }
 
 }
