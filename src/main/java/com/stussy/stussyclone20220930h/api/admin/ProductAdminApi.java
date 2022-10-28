@@ -73,7 +73,6 @@ public class ProductAdminApi {
                 .body(new CMRespDto<>("Register Successfully", true));
     }
 
-    @LogAspect
     @PostMapping("/product/img")
     public ResponseEntity<?> registerImg(ProductImgReqDto productImgReqDto) throws Exception {
 

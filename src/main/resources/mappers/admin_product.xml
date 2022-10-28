@@ -13,64 +13,65 @@
 
     <select id="getCategoryList" resultMap="product_category">
         select
-            id,
-            group_id,
-            category_name
+        id,
+        group_id,
+        category_name
         from
-            pdt_category_mst
+        pdt_category_mst
     </select>
 
     <insert id="saveProductMst" parameterType="com.stussy.stussyclone20220930h.domain.Product">
         insert into
-            pdt_mst
+        pdt_mst
         values(
-            0,
-            #{pdt_name},
-            #{category_id},
-            #{pdt_price},
-            #{pdt_simple_info},
-            #{pdt_detail_info},
-            #{pdt_option_info},
-            #{pdt_management_info},
-            #{pdt_shipping_info},
-            now(),
-            now()
+        0,
+        #{pdt_name},
+        #{category_id},
+        #{pdt_price},
+        #{pdt_simple_info},
+        #{pdt_detail_info},
+        #{pdt_option_info},
+        #{pdt_management_info},
+        #{pdt_shipping_info},
+        now(),
+        now()
         )
     </insert>
 
     <select id="getProductMstList" resultType="com.stussy.stussyclone20220930h.domain.OptionProductMst">
         select
-            pm.id as pdt_id,
-            pcm.category_name as category,
-            pm.pdt_name
+        pm.id as pdt_id,
+        pcm.category_name as category,
+        pm.pdt_name
         from
-            pdt_mst pm
-            left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
-    </select>
-
-    <select id="findProductColor"
-            parameterType="com.stussy.stussyclone20220930h.domain.ProductDetail" resultType="Integer">
-        select
-            count(*)
-        from
-            pdt_dtl
-        where
-            pdt_id = #{pdt_id}
-            and size_id = #{size_id}
-            and pdt_color = #{pdt_color}
+        pdt_mst pm
+        left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
     </select>
 
     <select id="getSizeList" parameterType="Integer" resultType="com.stussy.stussyclone20220930h.domain.OptionProductSize">
         select
-            psd.id as size_id,
-            psm.size_name
+        psd.id as size_id,
+        psm.size_name
         from
         pdt_mst pm
-            left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
-            left outer join pdt_size_dtl psd on(psd.group_id = pcm.group_id)
-            left outer join pdt_size_mst psm on(psm.id = psd.size_id)
+        left outer join pdt_category_mst pcm on(pcm.id = pm.category_id)
+        left outer join pdt_size_dtl psd on(psd.group_id = pcm.group_id)
+        left outer join pdt_size_mst psm on(psm.id = psd.size_id)
         where
-            pm.id = #{productId}
+        pm.id = #{productId}
+    </select>
+
+    <select id="findProductColor"
+            parameterType="com.stussy.stussyclone20220930h.domain.ProductDetail"
+            resultType="Integer">
+        select
+        count(*)
+        from
+        pdt_dtl
+        where
+        pdt_id = #{pdt_id}
+        and size_id = #{size_id}
+        and pdt_color = #{pdt_color}
     </select>
 
     <insert id="saveProductDtl" parameterType="com.stussy.stussyclone20220930h.domain.ProductDetail">
@@ -86,7 +87,6 @@
         now()
         )
     </insert>
-
     <insert id="saveProductImg" parameterType="java.util.List">
         insert into
         pdt_image_mst
@@ -102,4 +102,6 @@
             )
         </foreach>
     </insert>
+
+
 </mapper>

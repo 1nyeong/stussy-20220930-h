@@ -103,10 +103,10 @@ class CollectionsService {
             collectionProducts.innerHTML += `
             <li class="collection-product">
                 <div class="product-img">
-                    <img src="/static/images/product/product1.png">
+                    <img src="/static/upload/product/${product.mainImg}">
                 </div>
                 <div class="product-name">
-                    ${product.productName}
+                    ${product.productName}  
                 </div>
                 <div class="product-price">
                     ${product.productPrice}원
