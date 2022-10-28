@@ -33,4 +33,8 @@
 
     </select>
 
+    <select id="getProduct" resultType="com.stussy.stussyclone20220930h.domain.Product">
+
+    </select>
+
 </mapper>
