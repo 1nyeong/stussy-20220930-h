@@ -3,7 +3,7 @@ package com.stussy.stussyclone20220930h.service;
 import com.stussy.stussyclone20220930h.domain.User;
 import com.stussy.stussyclone20220930h.exception.CustomInternalServerErrorException;
 import com.stussy.stussyclone20220930h.repository.AccountRepository;
-import com.stussy.stussyclone20220930h.security.Principaldetails;
+import com.stussy.stussyclone20220930h.security.PrincipalDetails;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,7 +15,7 @@ import org.springframework.stereotype.Service;
 @Slf4j
 @Service
 @RequiredArgsConstructor
-public class PrincipelDetailService implements UserDetailsService {
+public class PrincipalDetailsService implements UserDetailsService {
 
     private final AccountRepository accountRepository;
 
@@ -34,6 +34,6 @@ public class PrincipelDetailService implements UserDetailsService {
             throw new UsernameNotFoundException("잘 못된 사용자 정보");
         }
 
-        return new Principaldetails(user);
+        return new PrincipalDetails(user);
     }
 }

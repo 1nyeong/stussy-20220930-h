@@ -60,9 +60,9 @@
                     <section class="account-new">
                         <h2 class="account-subtitle">회원가입</h2>
                         <p class="account-content">회원가입을 하시면, 주문 조회와 개인정보 관리 및 빠른 체크아웃 등 다양한 혜택을 누리실 수 있습니다.</p>
-                        <button class="btn account-button">신규가입</button>
+                        <button type="button" class="btn account-button">신규가입</button>
                     </section>
-                    <section class="account-current">   
+                    <section class="account-current">
                         <form action="/account/login" method="post">
                             <h2 class="account-subtitle">로그인</h2>
                             <th:block th:if="${error == 'auth'}">
@@ -81,16 +81,9 @@
                             </th:block>
                             <input type="email" class="account-input" name="email" th:value="${email}" placeholder="이메일" required>
                             <input type="password" class="account-input" name="password" placeholder="비밀번호" required>
-                            <a class="find-password-link" href="#forgot">비밀번호를 잊으셨나요?</a>
-                            <button class="btn account-button">로그인</button>
+                            <a class="find-password-link" href="">비밀번호를 잊으셨나요?</a>
+                            <button type="submit" class="btn account-button">로그인</button>
                         </form>
-                    </section>
-                    <section class="account-password-forgot account-invisible">
-                        <h2 class="account-subtitle">비밀번호 찾기</h2>
-                        <p class="account-content">계정에 연결된 이메일을 입력하시면 비밀번호를 재설정하실 수 있습니다.</p>
-                        <input type="email" class="account-input" placeholder="이메일">
-                        <button class="btn account-button">확인</button>
-                        <a class="login-return-link" href="/account/login">취소</a>
                     </section>
                 </div>
             </div>

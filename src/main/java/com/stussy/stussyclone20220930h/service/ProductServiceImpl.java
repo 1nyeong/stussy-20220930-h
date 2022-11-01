@@ -1,6 +1,7 @@
 package com.stussy.stussyclone20220930h.service;
 
 import com.stussy.stussyclone20220930h.domain.Product;
+import com.stussy.stussyclone20220930h.dto.CheckoutRespDto;
 import com.stussy.stussyclone20220930h.dto.CollectionListRespDto;
 import com.stussy.stussyclone20220930h.dto.ProductRespDto;
 import com.stussy.stussyclone20220930h.exception.CustomValidationException;
@@ -79,4 +80,11 @@ public class ProductServiceImpl implements ProductService {
                 .build();
         return dto;
     }
+
+    @Override
+    public CheckoutRespDto getCheckoutProduct(int pdtDtlId) throws Exception {
+        return productRepository.getPaymentProduct(pdtDtlId).toDto();
+    }
+
+
 }
