@@ -15,8 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 @RequiredArgsConstructor
 public class ProductController {
-
-    private ProductService productService;
+    private final ProductService productService;
 
     @GetMapping("/collections/{category}")
     public String loadCollections(@PathVariable String category) {
@@ -24,7 +23,7 @@ public class ProductController {
     }
 
     @GetMapping("/product/{pdtId}")
-    public String loadProductdetail(@PathVariable String pdtId){
+    public String loadProductDetail(@PathVariable String pdtId) {
         return "product/product_detail";
     }
 

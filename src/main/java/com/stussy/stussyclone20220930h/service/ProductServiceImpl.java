@@ -36,31 +36,34 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductRespDto getProduct(int ptdId) throws Exception {
-        Product product = productRepository.getProduct(ptdId);
+    public ProductRespDto getProduct(int pdtId) throws Exception {
+        Product product = productRepository.getProduct(pdtId);
 
-        if(product == null){
+        if(product == null) {
             Map<String, String> errormap = new HashMap<String, String>();
             errormap.put("error", "등록되지 않은 상품입니다.");
-            throw new CustomValidationException("getProduct Error", errormap);
+            throw new CustomValidationException("Get Product Error", errormap);
         }
+
         Map<String, List<Map<String, Object>>> pdtColors = new HashMap<String, List<Map<String, Object>>>();
         List<String> pdtImgs = new ArrayList<String>();
 
-        product.getPdt_dtls().forEach(dtls -> {
-            if(!pdtColors.containsKey(dtls.getPdt_color())){
-                pdtColors.put(dtls.getPdt_color(), new ArrayList<Map<String, Object>>());
+        product.getPdt_dtls().forEach(dtl -> {
+            if(!pdtColors.containsKey(dtl.getPdt_color())){
+                pdtColors.put(dtl.getPdt_color(), new ArrayList<Map<String, Object>>());
             }
         });
 
         product.getPdt_dtls().forEach(dtl -> {
-            Map<String, Object> pdtIdAndSize = new HashMap<String, Object>();
-            pdtIdAndSize.put("pdtDtlId", dtl.getId());
-            pdtIdAndSize.put("sizeId", dtl.getSize_id());
-            pdtIdAndSize.put("sizeName", dtl.getSize_name());
-            pdtIdAndSize.put("pdtStock", dtl.getPdt_stock());
-            pdtColors.get(dtl.getPdt_color()).add(pdtIdAndSize);
+            Map<String, Object> pdtDtlIdAndSize = new HashMap<String, Object>();
+            pdtDtlIdAndSize.put("pdtDtlId", dtl.getId());
+            pdtDtlIdAndSize.put("sizeId", dtl.getSize_id());
+            pdtDtlIdAndSize.put("sizeName", dtl.getSize_name());
+            pdtDtlIdAndSize.put("pdtStock", dtl.getPdt_stock());
+
+            pdtColors.get(dtl.getPdt_color()).add(pdtDtlIdAndSize);
         });
+
 
         product.getPdt_imgs().forEach(img -> {
             pdtImgs.add(img.getSave_name());
@@ -85,6 +88,4 @@ public class ProductServiceImpl implements ProductService {
     public CheckoutRespDto getCheckoutProduct(int pdtDtlId) throws Exception {
         return productRepository.getPaymentProduct(pdtDtlId).toDto();
     }
-
-
 }
