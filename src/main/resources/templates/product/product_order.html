@@ -7,7 +7,7 @@
     <title>Account</title>
     <Script src="http://code.jquery.com/jquery-latest.min.js"></Script>
     <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-{1.2.1}.js"></script>
+    <script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.2.0.js"></script>
     <link rel="stylesheet" href="/static/css/style.css">
     <link rel="stylesheet" href="/static/css/order.css">
     <title>결제</title>
@@ -33,6 +33,7 @@
                         </div>
                         <div class="profile-detail">
                             <div class="principal-user" th:text="|${user.name} (${user.email})|"></div>
+                            <input type="hidden" class="principal-email" th:value="${user.email}"></div>
                             <a href="/logout">로그아웃</a>
                         </div>
                     </div>
